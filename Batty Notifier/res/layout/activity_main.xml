@@ -4,12 +4,23 @@
     android:layout_height="match_parent" >
 
     <TextView
+        android:id="@+id/MainActivity_HowTo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/hello_world"
-        tools:context=".MainActivity" />
+        android:layout_marginTop="34dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:text="@string/.MainActivity_HowTo"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
+    <Switch
+        android:id="@+id/MainActivity_OnOffSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/MainActivity_HowTo"
+        android:layout_below="@+id/MainActivity_HowTo"
+        android:layout_marginTop="28dp"
+        android:text="@string/.MainActivity_OnOffSwitch" />
+    
 </RelativeLayout>
  
