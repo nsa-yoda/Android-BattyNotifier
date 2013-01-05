@@ -6,7 +6,7 @@ import android.os.IBinder;
 import android.widget.Toast;
 
 public class NotificationService extends Service {
-    @Override
+    @Override 
     public IBinder onBind(Intent arg0) {
           return null;
     }
