@@ -8,6 +8,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.BatteryManager;
 import android.os.IBinder;
 import android.widget.Toast;
@@ -18,7 +20,6 @@ public class NotificationService extends Service {
 	public static int SHOW_HEALTH = 1; // whether to show battery health in status bar
 	public static int SHOW_VOLTAGE = 1; // whether to show voltage in status bar
 	public static int SHOW_VOLTAGE_MILLIVOLT = 1; // whether to show millivolts in status bar
-	public static int SHOW_VOLTAGE_VOLT = 1; // whether to show volts in status bar
 	public static int SHOW_STATUS = 1; // whether to show Charging/Not Charging, etc
 	public static int SHOW_PERIODIC_TOASTS = 1; // whether to show periodic toast messages with charge level
 	
@@ -83,19 +84,19 @@ public class NotificationService extends Service {
     	    
     	    // The content show underneath the battery percentage
     	    String NotificationContent = "";
-    	    if(SHOW_TEMP == 1) { NotificationContent += "Temp: " + temp + "°C "; }
+    	    if(SHOW_TEMP == 1) { NotificationContent += temp + "°C "; }
     	    if(SHOW_VOLTAGE == 1) {
     	    	if(SHOW_VOLTAGE_MILLIVOLT == 1){
-    	    		NotificationContent += ", Voltage: " + voltage + "mV ";
-    	    	} 
-    	    	if(SHOW_VOLTAGE_VOLT == 1){
-    	    		NotificationContent += ", " + (voltage / 1000) + "V";
+    	    		NotificationContent += voltage + "mV ";
     	    	}
     	    }
-    	    if(SHOW_HEALTH == 1) { NotificationContent += ", " + strHealth; }
+    	    if(SHOW_HEALTH == 1) { NotificationContent += " " + strHealth; }
 
     	    myNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);    	    
     		Notification notification = new Notification(R.drawable.battery, NotificationTicket, 0);
+    		notification.largeIcon = (Bitmap)BitmapFactory.decodeResource(context.getResources(), R.drawable.battery);
+    		notification.icon = R.drawable.levellist;
+    		notification.iconLevel = level;
     	    Intent notificationIntent = new Intent(context, NotificationService.class);
     	    PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
     	    notification.setLatestEventInfo(context, NotificationTitle, NotificationContent, contentIntent);
