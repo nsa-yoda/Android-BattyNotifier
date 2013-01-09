@@ -12,12 +12,8 @@ import android.os.BatteryManager;
 import android.os.IBinder;
 import android.widget.Toast;
 
-@SuppressWarnings("unused")
 public class NotificationService extends Service {
-    public static int scale = -1;
-    public static int level = -1;
-    public static int voltage = -1;
-    public static int temp = -1;
+	public static final int NOTIFICATION_ID = 1;
 	
     @Override 
     public IBinder onBind(Intent arg0) {
@@ -25,56 +21,56 @@ public class NotificationService extends Service {
     }
     
 	private BroadcastReceiver mBatInfoReceiver = new BroadcastReceiver(){
-    	@Override
-    	public void onReceive(Context arg0, Intent intent) {
+		public NotificationManager myNotificationManager;
+		
+    	@SuppressWarnings("deprecation")
+		@Override
+    	public void onReceive(Context context, Intent intent) {
     		int level = intent.getIntExtra("level", 0);
-    		Toast.makeText(arg0, String.valueOf(level), Toast.LENGTH_LONG).show();
+    		int temp = intent.getIntExtra("temperature", 0) / 10;
+    		int voltage = intent.getIntExtra("voltage", 0) / 1000;
+    		Toast.makeText(context, String.valueOf(level + "% Charge"), Toast.LENGTH_SHORT).show();
+    		
+    		// Determine charging status
+    		int status = intent.getIntExtra("status", BatteryManager.BATTERY_STATUS_UNKNOWN);
+    		String strStatus;
+    		if (status == BatteryManager.BATTERY_STATUS_CHARGING){
+    			strStatus = "Charging";
+    		} else if (status == BatteryManager.BATTERY_STATUS_DISCHARGING || 
+    				   status == BatteryManager.BATTERY_STATUS_NOT_CHARGING){
+    			strStatus = "Not Charging";
+    		} else if (status == BatteryManager.BATTERY_STATUS_FULL){
+    			strStatus = "Full";
+    		} else {
+    			strStatus = "Status Unknown";
+    		}
+    		
+    		CharSequence NotificationTicket = "Batty Notifier Started!";
+    	    CharSequence NotificationTitle = level + "% and " + strStatus;
+    	    CharSequence NotificationContent = "Temp: " + temp + "°C, Voltage: " + voltage + "V";
+    		
+    	    myNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);    	    
+    		Notification notification = new Notification(R.drawable.battery, NotificationTicket, 0);
+    	    Intent notificationIntent = new Intent(context, NotificationService.class);
+    	    PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
+    	    notification.setLatestEventInfo(context, NotificationTitle, NotificationContent, contentIntent);
+    	    notification.flags |= Notification.FLAG_ONGOING_EVENT;
+    	    myNotificationManager.notify(NOTIFICATION_ID, notification);
     	}
     };
     
     @Override
     public void onCreate() {
           super.onCreate();
-          Toast.makeText(this, "Starting Batty Notifier...", Toast.LENGTH_SHORT).show();
-         
-          /*BroadcastReceiver batteryReceiver = new BroadcastReceiver() {
-              @Override
-              public void onReceive(Context context, Intent batteryIntent) {
-            	  NotificationService.level = batteryIntent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
-            	  NotificationService.scale = batteryIntent.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
-            	  NotificationService.temp = batteryIntent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, -1);
-            	  NotificationService.voltage = batteryIntent.getIntExtra(BatteryManager.EXTRA_VOLTAGE, -1);
-              }
-          };
-          
-          IntentFilter filter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
-          registerReceiver(batteryReceiver, filter);*/
-          
+          Toast.makeText(this, "Starting Batty Notifier...", Toast.LENGTH_SHORT).show();          
           this.registerReceiver(this.mBatInfoReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
     }
-    
-    /*public void onReceive(Context context, Intent intent){
-        // Prepare intent which is triggered if the notification is selected
-        Intent notificationIntent = new Intent(this, NotificationService.class);
-        PendingIntent pIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
-
-        // Build notification
-        Notification noti = new Notification.Builder(this)
-            .setContentTitle(NotificationService.level + "% Charge Left")
-            .setContentText("Temp: " + NotificationService.temp + "°, Voltage: " + NotificationService.voltage)
-            //.setSmallIcon(R.drawable.icon) 
-            .setContentIntent(pIntent).build();
-        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE); 
-        
-        // Don't hide the notification after its selected
-        noti.flags |= Notification.FLAG_ONGOING_EVENT;
-
-        notificationManager.notify(0, noti);
-    }*/
     
     @Override
     public void onDestroy() {
           super.onDestroy();
           Toast.makeText(this, "Stopping Batty Notifier...", Toast.LENGTH_SHORT).show();
+          NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE); 
+          notificationManager.cancel(NOTIFICATION_ID);
     }
 }
