@@ -7,7 +7,7 @@
     <item android:maxLevel="5" android:drawable="@drawable/battery_level_5" />
     <item android:maxLevel="6" android:drawable="@drawable/battery_level_6" />
     <item android:maxLevel="7" android:drawable="@drawable/battery_level_7" />
-    <item android:maxLevel="8" android:drawable="@drawable/battery_level_8" />
+    <item android:maxLevel="8" android:drawable="@drawable/battery_level_8" /> 
     <item android:maxLevel="9" android:drawable="@drawable/battery_level_9" />
     <item android:maxLevel="10" android:drawable="@drawable/battery_level_10" />
     <item android:maxLevel="11" android:drawable="@drawable/battery_level_11" />

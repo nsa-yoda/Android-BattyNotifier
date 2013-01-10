@@ -1,6 +1,5 @@
 package com.jsanc623.batty.notifier;
 
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -12,10 +11,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.BatteryManager;
 import android.os.IBinder;
+import android.support.v4.app.NotificationCompat;
 import android.widget.Toast;
 
 public class NotificationService extends Service {
-	public static final int NOTIFICATION_ID = 1;
+	public static final int FM_NOTIFICATION_ID = 1;
 	public static int SHOW_TEMP = 1; // whether to show temperature in status bar
 	public static int SHOW_HEALTH = 1; // whether to show battery health in status bar
 	public static int SHOW_VOLTAGE = 1; // whether to show voltage in status bar
@@ -29,9 +29,7 @@ public class NotificationService extends Service {
     }
     
 	private BroadcastReceiver mBatInfoReceiver = new BroadcastReceiver(){
-		public NotificationManager myNotificationManager;
-		
-    	@SuppressWarnings({ "deprecation", "unused" })
+    	@SuppressWarnings({ "unused" })
 		@Override
     	public void onReceive(Context context, Intent intent) {
     		int level = intent.getIntExtra("level", 0);
@@ -84,31 +82,23 @@ public class NotificationService extends Service {
     	    
     	    // The content show underneath the battery percentage
     	    String NotificationContent = "";
-    	    if(SHOW_TEMP == 1) { NotificationContent += temp + "°C "; }
+    	    if(SHOW_TEMP == 1) { NotificationContent += temp + "°C  "; }
     	    if(SHOW_VOLTAGE == 1) {
     	    	if(SHOW_VOLTAGE_MILLIVOLT == 1){
-    	    		NotificationContent += voltage + "mV ";
+    	    		NotificationContent += voltage + "mV  ";
     	    	}
     	    }
-    	    if(SHOW_HEALTH == 1) { NotificationContent += " " + strHealth; }
+    	    if(SHOW_HEALTH == 1) { NotificationContent += strHealth; }
 
-    	    myNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);    	    
-    		Notification notification = new Notification(R.drawable.battery, NotificationTicket, 0);
-    		notification.largeIcon = (Bitmap)BitmapFactory.decodeResource(context.getResources(), R.drawable.battery);
-    		notification.icon = R.drawable.levellist;
-    		notification.iconLevel = level;
-    	    Intent notificationIntent = new Intent(context, NotificationService.class);
-    	    PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
-    	    notification.setLatestEventInfo(context, NotificationTitle, NotificationContent, contentIntent);
-    	    notification.flags |= Notification.FLAG_ONGOING_EVENT;
-    	    myNotificationManager.notify(NOTIFICATION_ID, notification);
+    	    Bitmap largeIcon = (Bitmap)BitmapFactory.decodeResource(context.getResources(), R.drawable.battery);
+    	    
+    	    addNotification(NotificationTitle, NotificationContent, NotificationTicket, largeIcon, level);
     	}
     };
     
     @Override
     public void onCreate() {
           super.onCreate();
-          Toast.makeText(this, "Starting Batty Notifier...", Toast.LENGTH_SHORT).show();          
           this.registerReceiver(this.mBatInfoReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
     }
     
@@ -116,7 +106,34 @@ public class NotificationService extends Service {
     public void onDestroy() {
           super.onDestroy();
           Toast.makeText(this, "Stopping Batty Notifier...", Toast.LENGTH_SHORT).show();
-          NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE); 
-          notificationManager.cancel(NOTIFICATION_ID);
+          removeNotification();
     }
+    
+    // Start notification
+    private void addNotification(String title, String body, String ticker, Bitmap largeIcon, int iconLevel) {
+	    NotificationCompat.Builder builder =  
+	            new NotificationCompat.Builder(this)  
+	            .setSmallIcon(R.drawable.levellist, iconLevel)
+	            .setLargeIcon(largeIcon)
+	            .setContentTitle(title)  
+	            .setContentText(body)
+	            .setOngoing(true)
+	            .setNumber(iconLevel)
+	            .setTicker(ticker);  
+	
+	    Intent notificationIntent = new Intent(this, MainActivity.class);  
+	    PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent,   
+	            PendingIntent.FLAG_UPDATE_CURRENT);  
+	    builder.setContentIntent(contentIntent);  
+	
+	    // Add as notification  
+	    NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);  
+	    manager.notify(FM_NOTIFICATION_ID, builder.build());  
+	}  
+
+	// Remove notification  
+	private void removeNotification() {  
+	    NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);  
+	    manager.cancel(FM_NOTIFICATION_ID);  
+	}  
 }
