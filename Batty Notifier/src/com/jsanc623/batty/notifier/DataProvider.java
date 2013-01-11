@@ -17,10 +17,10 @@ public class DataProvider {
     public static final String KEY_SHOW_STATUS = "show_status";
     public static final String KEY_SHOW_PERIODIC_TOASTS = "show_periodic_toasts";
     private static final String TAG = "DataProvider";
-    
-    private static final String DATABASE_NAME = "BattyNotifierDB";
-    private static final String DATABASE_TABLE = "settings";
+
     private static final int    DATABASE_VERSION = 2;
+    private static final String DATABASE_NAME = "BattyNotifier";
+    private static final String DATABASE_TABLE = "bat_settings";
     
 	private final Context context;
 	private DatabaseHelper DBHelper;
