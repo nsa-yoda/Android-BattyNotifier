@@ -86,6 +86,8 @@ public class NotificationService extends Service {
     	    if(SHOW_VOLTAGE == 1) {
     	    	if(SHOW_VOLTAGE_MILLIVOLT == 1){
     	    		NotificationContent += voltage + "mV  ";
+    	    	} else {
+    	    		NotificationContent += voltage / 1000 + "V  ";
     	    	}
     	    }
     	    if(SHOW_HEALTH == 1) { NotificationContent += strHealth; }
@@ -94,7 +96,7 @@ public class NotificationService extends Service {
     	    
     	    addNotification(NotificationTitle, NotificationContent, NotificationTicket, largeIcon, level);
     	}
-    };
+    }; 
     
     @Override
     public void onCreate() {

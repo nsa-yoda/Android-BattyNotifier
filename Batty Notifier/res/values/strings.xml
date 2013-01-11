@@ -10,6 +10,12 @@
         A simple and unintrusive way to display your battery percentage in your 
         notification bar.
     </string>
-    <string name=".MainActivity_OnOffSwitch">Status</string>
+    <string name=".MainActivity_OnOffSwitch">On/Off</string>
+    <string name=".MainActivity_ShowTempSwitch">Temperature</string>
+    <string name=".MainActivity_ShowHealthSwitch">Health</string>
+    <string name=".MainActivity_ShowVoltageSwitch">Voltage</string>
+    <string name=".MainActivity_ShowMillivoltSwitch">Voltage in mV</string>
+    <string name=".MainActivity_ShowStatusSwitch">Status</string>
+    <string name=".MainActivity_ShowToastsSwitch">Periodic Toasts</string>
 
 </resources>
