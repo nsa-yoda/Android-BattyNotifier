@@ -9,6 +9,8 @@ import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Switch;
 
+
+@SuppressWarnings("unused")
 public class MainActivity extends Activity {
 	public DataProvider DataProvider = new DataProvider(MainActivity.this);
 	public static int db_showTemp = 0;
@@ -19,9 +21,7 @@ public class MainActivity extends Activity {
 	public static int db_periodicToasts = 0;
 	
 	public void retrieveFromDb(){
-		Toast.makeText(MainActivity.this, "inretrieve,beforedprovider", Toast.LENGTH_LONG).show();
 		DataProvider.open();
-		Toast.makeText(MainActivity.this, "inretrieve,beforedata", Toast.LENGTH_LONG).show();
 		Cursor data = DataProvider.getRecord(1);
 		//DataProvider.close();
 		/*db_showTemp = data.getInt(2);
