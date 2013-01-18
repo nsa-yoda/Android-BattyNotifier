@@ -21,8 +21,8 @@ public class MainActivity extends Activity {
 	public static int db_periodicToasts = 0;
 	
 	public void retrieveFromDb(){
-		DataProvider.open();
-		Cursor data = DataProvider.getRecord(1);
+		//DataProvider.open();
+		//Cursor data = DataProvider.getRecord(1);
 		//DataProvider.close();
 		/*db_showTemp = data.getInt(2);
 		db_showHealth = data.getInt(3);
