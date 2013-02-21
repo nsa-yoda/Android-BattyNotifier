@@ -18,67 +18,130 @@
 	        android:text="@string/.MainActivity_HowTo"
 	        android:textAppearance="?android:attr/textAppearanceSmall" />
 	
-	    <Switch
-	        android:id="@+id/MainActivity_OnOffSwitch"
+	    <TextView
+	        android:id="@+id/MainActivity_OnOffSwitchText"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_alignLeft="@+id/MainActivity_HowTo"
 	        android:layout_below="@+id/MainActivity_HowTo"
-	        android:layout_marginTop="28dp"
-	        android:text="@string/.MainActivity_OnOffSwitch" /> 
+	        android:layout_alignTop="@+id/MainActivity_OnOffSwitch"
+	        android:text="@string/.MainActivity_OnOffSwitch"
+	        android:textSize="16sp" />
+		    <Switch
+		        android:id="@+id/MainActivity_OnOffSwitch"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignRight="@+id/MainActivity_HowTo"
+		        android:layout_below="@+id/MainActivity_HowTo"
+		        android:layout_marginTop="24dp"
+		        android:layout_marginLeft="96dp" /> 
 	
-	    <Switch
-	        android:id="@+id/MainActivity_ShowTempSwitch"
+	
+	    <TextView
+	        android:id="@+id/MainActivity_ShowTempSwitchText"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_alignLeft="@+id/MainActivity_OnOffSwitch"
-	        android:layout_below="@+id/MainActivity_OnOffSwitch"
-	        android:layout_marginTop="28dp"
-	        android:text="@string/.MainActivity_ShowTempSwitch" />
+	        android:layout_alignLeft="@+id/MainActivity_OnOffSwitchText"
+	        android:layout_below="@+id/MainActivity_OnOffSwitchText"
+	        android:text="@string/.MainActivity_ShowTempSwitch"
+	        android:layout_alignTop="@+id/MainActivity_ShowTempSwitch"
+	        android:textSize="16sp" />
+		    <Switch
+		        android:id="@+id/MainActivity_ShowTempSwitch"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignLeft="@+id/MainActivity_OnOffSwitch"
+		        android:layout_below="@+id/MainActivity_OnOffSwitch"
+		        android:layout_marginTop="24dp"  />
 	
-	    <Switch
-	        android:id="@+id/MainActivity_ShowHealthSwitch"
+	
+	    <TextView
+	        android:id="@+id/MainActivity_ShowHealthSwitchText"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_alignLeft="@+id/MainActivity_ShowTempSwitch"
-	        android:layout_below="@+id/MainActivity_ShowTempSwitch"
-	        android:layout_marginTop="28dp"
-	        android:text="@string/.MainActivity_ShowHealthSwitch" />
+	        android:layout_alignLeft="@+id/MainActivity_ShowTempSwitchText"
+	        android:layout_below="@+id/MainActivity_ShowTempSwitchText"
+	        android:text="@string/.MainActivity_ShowHealthSwitch"
+	        android:layout_alignTop="@+id/MainActivity_ShowHealthSwitch"
+	        android:textSize="16sp" />
+		    <Switch
+		        android:id="@+id/MainActivity_ShowHealthSwitch"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignLeft="@+id/MainActivity_ShowTempSwitch"
+		        android:layout_below="@+id/MainActivity_ShowTempSwitch"
+		        android:layout_marginTop="24dp" />
 	
-	    <Switch
-	        android:id="@+id/MainActivity_ShowVoltageSwitch"
+	
+	    <TextView
+	        android:id="@+id/MainActivity_ShowVoltageSwitchText"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_alignLeft="@+id/MainActivity_ShowHealthSwitch"
-	        android:layout_below="@+id/MainActivity_ShowHealthSwitch"
-	        android:layout_marginTop="28dp"
-	        android:text="@string/.MainActivity_ShowVoltageSwitch" />
+	        android:layout_alignLeft="@+id/MainActivity_ShowHealthSwitchText"
+	        android:layout_below="@+id/MainActivity_ShowHealthSwitchText"
+	        android:text="@string/.MainActivity_ShowVoltageSwitch"
+	        android:layout_alignTop="@+id/MainActivity_ShowVoltageSwitch"
+	        android:textSize="16sp" />
+		    <Switch
+		        android:id="@+id/MainActivity_ShowVoltageSwitch"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignLeft="@+id/MainActivity_ShowHealthSwitch"
+		        android:layout_below="@+id/MainActivity_ShowHealthSwitch"
+		        android:layout_marginTop="24dp" />
 	
-	    <Switch
-	        android:id="@+id/MainActivity_ShowMillivoltSwitch"
+	
+	    <TextView
+	        android:id="@+id/MainActivity_ShowMillivoltSwitchText"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_alignLeft="@+id/MainActivity_ShowVoltageSwitch"
-	        android:layout_below="@+id/MainActivity_ShowVoltageSwitch"
-	        android:layout_marginTop="28dp"
-	        android:text="@string/.MainActivity_ShowMillivoltSwitch" />
+	        android:layout_alignLeft="@+id/MainActivity_ShowVoltageSwitchText"
+	        android:layout_below="@+id/MainActivity_ShowVoltageSwitchText"
+	        android:text="@string/.MainActivity_ShowMillivoltSwitch"
+	        android:layout_alignTop="@+id/MainActivity_ShowMillivoltSwitch"
+	        android:textSize="16sp" />
+		    <Switch
+		        android:id="@+id/MainActivity_ShowMillivoltSwitch"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignLeft="@+id/MainActivity_ShowVoltageSwitch"
+		        android:layout_below="@+id/MainActivity_ShowVoltageSwitch"
+		        android:layout_marginTop="24dp" />
 	
-	    <Switch
-	        android:id="@+id/MainActivity_ShowStatusSwitch"
+	
+	    <TextView
+	        android:id="@+id/MainActivity_ShowStatusSwitchText"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_alignLeft="@+id/MainActivity_ShowMillivoltSwitch"
-	        android:layout_below="@+id/MainActivity_ShowMillivoltSwitch"
-	        android:layout_marginTop="28dp"
-	        android:text="@string/.MainActivity_ShowStatusSwitch" />
+	        android:layout_alignLeft="@+id/MainActivity_ShowMillivoltSwitchText"
+	        android:layout_below="@+id/MainActivity_ShowMillivoltSwitchText"
+	        android:text="@string/.MainActivity_ShowStatusSwitch"
+	        android:layout_alignTop="@+id/MainActivity_ShowStatusSwitch"
+	        android:textSize="16sp" />
+		    <Switch
+		        android:id="@+id/MainActivity_ShowStatusSwitch"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignLeft="@+id/MainActivity_ShowMillivoltSwitch"
+		        android:layout_below="@+id/MainActivity_ShowMillivoltSwitch"
+		        android:layout_marginTop="24dp" />
 	
-	    <Switch
-	        android:id="@+id/MainActivity_ShowToastsSwitch"
+	
+	    <TextView
+	        android:id="@+id/MainActivity_ShowToastsSwitchText"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_alignLeft="@+id/MainActivity_ShowStatusSwitch"
-	        android:layout_below="@+id/MainActivity_ShowStatusSwitch"
-	        android:layout_marginTop="28dp"
-	        android:text="@string/.MainActivity_ShowToastsSwitch" />
+	        android:layout_alignLeft="@+id/MainActivity_ShowStatusSwitchText"
+	        android:layout_below="@+id/MainActivity_ShowStatusSwitchText"
+		    android:text="@string/.MainActivity_ShowToastsSwitch"
+	        android:layout_alignTop="@+id/MainActivity_ShowToastsSwitch"
+	        android:textSize="16sp" />
+		    <Switch
+		        android:id="@+id/MainActivity_ShowToastsSwitch"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignLeft="@+id/MainActivity_ShowStatusSwitch"
+		        android:layout_below="@+id/MainActivity_ShowStatusSwitch"
+		        android:layout_marginTop="24dp" />
 	</RelativeLayout>
 </ScrollView>
