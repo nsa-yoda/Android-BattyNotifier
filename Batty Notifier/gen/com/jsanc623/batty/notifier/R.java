@@ -118,6 +118,8 @@ public final class R {
         public static final int levellist=0x7f020068;
     }
     public static final class id {
+        public static final int MainActivity_AutoStartSwitch=0x7f080010;
+        public static final int MainActivity_AutoStartSwitchText=0x7f08000f;
         public static final int MainActivity_HowTo=0x7f080000;
         public static final int MainActivity_OnOffSwitch=0x7f080002;
         public static final int MainActivity_OnOffSwitchText=0x7f080001;
@@ -133,7 +135,7 @@ public final class R {
         public static final int MainActivity_ShowToastsSwitchText=0x7f08000d;
         public static final int MainActivity_ShowVoltageSwitch=0x7f080008;
         public static final int MainActivity_ShowVoltageSwitchText=0x7f080007;
-        public static final int menu_settings=0x7f08000f;
+        public static final int menu_settings=0x7f080011;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -145,6 +147,7 @@ public final class R {
         public static final int Scrollview=0x7f070000;
     }
     public static final class string {
+        public static final int _MainActivity_AutoStartSwitch=0x7f04000b;
         /**  Application Strings 
          */
         public static final int _MainActivity_HowTo=0x7f040003;

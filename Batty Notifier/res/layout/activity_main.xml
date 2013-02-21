@@ -12,7 +12,7 @@
 	        android:id="@+id/MainActivity_HowTo"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_marginTop="34dp"
+	        android:layout_marginTop="28dp"
 	        android:layout_marginLeft="18dp"
 	        android:layout_marginRight="18dp"
 	        android:text="@string/.MainActivity_HowTo"
@@ -33,7 +33,7 @@
 		        android:layout_height="wrap_content"
 		        android:layout_alignRight="@+id/MainActivity_HowTo"
 		        android:layout_below="@+id/MainActivity_HowTo"
-		        android:layout_marginTop="24dp"
+		        android:layout_marginTop="16dp"
 		        android:layout_marginLeft="96dp" /> 
 	
 	
@@ -52,7 +52,7 @@
 		        android:layout_height="wrap_content"
 		        android:layout_alignLeft="@+id/MainActivity_OnOffSwitch"
 		        android:layout_below="@+id/MainActivity_OnOffSwitch"
-		        android:layout_marginTop="24dp"  />
+		        android:layout_marginTop="16dp"  />
 	
 	
 	    <TextView
@@ -70,7 +70,7 @@
 		        android:layout_height="wrap_content"
 		        android:layout_alignLeft="@+id/MainActivity_ShowTempSwitch"
 		        android:layout_below="@+id/MainActivity_ShowTempSwitch"
-		        android:layout_marginTop="24dp" />
+		        android:layout_marginTop="16dp" />
 	
 	
 	    <TextView
@@ -88,7 +88,7 @@
 		        android:layout_height="wrap_content"
 		        android:layout_alignLeft="@+id/MainActivity_ShowHealthSwitch"
 		        android:layout_below="@+id/MainActivity_ShowHealthSwitch"
-		        android:layout_marginTop="24dp" />
+		        android:layout_marginTop="16dp" />
 	
 	
 	    <TextView
@@ -106,7 +106,7 @@
 		        android:layout_height="wrap_content"
 		        android:layout_alignLeft="@+id/MainActivity_ShowVoltageSwitch"
 		        android:layout_below="@+id/MainActivity_ShowVoltageSwitch"
-		        android:layout_marginTop="24dp" />
+		        android:layout_marginTop="16dp" />
 	
 	
 	    <TextView
@@ -124,7 +124,7 @@
 		        android:layout_height="wrap_content"
 		        android:layout_alignLeft="@+id/MainActivity_ShowMillivoltSwitch"
 		        android:layout_below="@+id/MainActivity_ShowMillivoltSwitch"
-		        android:layout_marginTop="24dp" />
+		        android:layout_marginTop="16dp" />
 	
 	
 	    <TextView
@@ -142,6 +142,24 @@
 		        android:layout_height="wrap_content"
 		        android:layout_alignLeft="@+id/MainActivity_ShowStatusSwitch"
 		        android:layout_below="@+id/MainActivity_ShowStatusSwitch"
-		        android:layout_marginTop="24dp" />
+		        android:layout_marginTop="16dp" />
+	
+	
+	    <TextView
+	        android:id="@+id/MainActivity_AutoStartSwitchText"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/MainActivity_ShowToastsSwitchText"
+	        android:layout_below="@+id/MainActivity_ShowToastsSwitchText"
+		    android:text="@string/.MainActivity_AutoStartSwitch"
+	        android:layout_alignTop="@+id/MainActivity_AutoStartSwitch"
+	        android:textSize="16sp" />
+		    <Switch
+		        android:id="@+id/MainActivity_AutoStartSwitch"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignLeft="@+id/MainActivity_ShowToastsSwitch"
+		        android:layout_below="@+id/MainActivity_ShowToastsSwitch"
+		        android:layout_marginTop="16dp" />
 	</RelativeLayout>
 </ScrollView>

@@ -14,7 +14,7 @@
         android:killAfterRestore="false" android:allowBackup="true">
         
         <activity
-            android:name=".MainActivity"
+            android:name="com.jsanc623.batty.notifier.MainActivity"
             android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,9 +22,9 @@
             </intent-filter>
         </activity>
         
-        <service android:name=".NotificationService"></service>
+        <service android:name="com.jsanc623.batty.notifier.NotificationService"></service>
         
-        <receiver android:name=".AutoStartReceiver">
+        <receiver android:name="com.jsanc623.batty.notifier.AutoStartReceiver">
 		    <intent-filter>
 		        <action android:name="android.intent.action.BOOT_COMPLETED" />
 		    </intent-filter>

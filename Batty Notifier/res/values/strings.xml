@@ -17,5 +17,6 @@
     <string name=".MainActivity_ShowMillivoltSwitch">Voltage in mV</string>
     <string name=".MainActivity_ShowStatusSwitch">Status</string>
     <string name=".MainActivity_ShowToastsSwitch">Periodic Toasts</string>
+    <string name=".MainActivity_AutoStartSwitch">Start on Boot</string>
 
 </resources>
